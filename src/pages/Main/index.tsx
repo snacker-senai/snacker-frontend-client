@@ -21,7 +21,7 @@ const products: IProduct[] = [
   },
   {
     id: 2,
-    name: 'Macarrão anal',
+    name: 'Macarrão',
     description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
     price: 24.90,
     image: "https://img.youtube.com/vi/FrdumyhYaZY/maxresdefault.jpg",
@@ -47,7 +47,6 @@ export const Main = () => {
           />
         ))}
       </div>
-      <BottomBar />
       <ProductModal
         selectedProduct={selectedProduct}
         onRequestClose={() => setSelectedProduct(undefined)}
