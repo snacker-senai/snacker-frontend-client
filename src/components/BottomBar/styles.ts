@@ -4,7 +4,7 @@ export const StyledBottomBar = styled.div`
     height: 80px;
     width: 100%;
     background-color: white;
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(200, 200, 200);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,6 +18,7 @@ export const StyledBottomBar = styled.div`
         font-size: 20px;
         font-weight: bold;
         cursor: pointer;
+        color: rgb(51, 51, 54);
 
         svg {
             font-size: 40px;
@@ -27,6 +28,6 @@ export const StyledBottomBar = styled.div`
     }
 
     .disabled {
-        color: rgb(120, 120, 121);
+        color: rgb(120, 120, 121) !important;
     }
 `
