@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { BottomBar } from '../../components/BottomBar'
 import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
 import { ProductModal } from '../../components/ProductModal'

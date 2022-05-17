@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { StyledProductModal } from './styles'
 import { FaTimes } from 'react-icons/fa'
 import { IProduct } from '../../services/Product/Product'
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
 interface IProductModalProps {
   onRequestClose: () => void
@@ -16,6 +17,18 @@ const customStyles = {
 }
 
 export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalProps) => {
+    const [productQuantity, setProductQuantity] = useState(1)
+
+    const increaseProductQuantity = () => {
+      setProductQuantity(productQuantity + 1)
+    }
+
+    const decreaseProductQuantity = () => {
+      if (productQuantity > 1) {
+        setProductQuantity(productQuantity - 1)
+      }
+    }
+
     return (
         <Modal
             isOpen={!!selectedProduct}
@@ -28,6 +41,36 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
               <div className="modal-title">{selectedProduct?.name}</div>
               <div className="close-button" onClick={onRequestClose}>
                 <FaTimes />
+              </div>
+            </div>
+            <div className="content">
+              <div className="left-session">
+                <img src={selectedProduct?.image} alt="imagem" />
+              </div>
+              <div className="right-session">
+                <div className="product-description">
+                  {selectedProduct?.description}
+                </div>
+                <div className="comment-container">
+                  <span>Algum comentário?</span>
+                  <textarea className="comment-input" placeholder="Ex: tirar a cebola, maionese à parte, etc." rows={3}></textarea>
+                </div>
+                <div className="footer">
+                  <div className="quantity-container">
+                    <span onClick={decreaseProductQuantity} className={productQuantity === 1 ? "disabled minus" : "minus"}>
+                      <FaMinus />
+                    </span>
+                    <span className="quantity">
+                      {productQuantity}
+                    </span>
+                    <span className="plus" onClick={increaseProductQuantity}>
+                      <FaPlus />
+                    </span>
+                  </div>
+                  <button className="add-button">
+                    Adicionar R$ {productQuantity * (selectedProduct?.price || 0)} 
+                  </button>
+                </div>
               </div>
             </div>
           </StyledProductModal>
