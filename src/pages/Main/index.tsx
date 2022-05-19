@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Cart } from '../../components/Cart'
 import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
 import { ProductModal } from '../../components/ProductModal'
@@ -41,6 +42,7 @@ export const Main = () => {
       <div className="content">
         {products.map(product => (
           <Product
+            key={product.id}
             product={product}
             onClick={() => setSelectedProduct(product)}
           />
@@ -50,6 +52,7 @@ export const Main = () => {
         selectedProduct={selectedProduct}
         onRequestClose={() => setSelectedProduct(undefined)}
       />
+      <Cart />
     </StyledMain>
   )
 }

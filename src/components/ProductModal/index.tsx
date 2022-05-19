@@ -4,6 +4,7 @@ import { StyledProductModal } from './styles'
 import { FaTimes } from 'react-icons/fa'
 import { IProduct } from '../../services/Product/Product'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { useCart } from '../../context/CartContext'
 
 interface IProductModalProps {
   onRequestClose: () => void
@@ -18,6 +19,7 @@ const customStyles = {
 
 export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalProps) => {
     const [productQuantity, setProductQuantity] = useState(1)
+    const { addProduct } = useCart()
 
     const increaseProductQuantity = () => {
       setProductQuantity(productQuantity + 1)
@@ -29,11 +31,16 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
       }
     }
 
+    const handleAddProductOnCart = () => {
+      addProduct(selectedProduct!)
+      onRequestClose()
+    }
+
     return (
         <Modal
-            isOpen={!!selectedProduct}
-            contentLabel="Teste"
-            style={customStyles}
+          isOpen={!!selectedProduct}
+          contentLabel="Teste"
+          style={customStyles}
         >
           <StyledProductModal>
             <div className="header">
@@ -67,7 +74,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
                       <FaPlus />
                     </span>
                   </div>
-                  <button className="add-button">
+                  <button className="add-button" onClick={handleAddProductOnCart}>
                     Adicionar R$ {productQuantity * (selectedProduct?.price || 0)} 
                   </button>
                 </div>
