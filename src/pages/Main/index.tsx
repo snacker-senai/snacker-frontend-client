@@ -4,6 +4,7 @@ import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
 import { ProductModal } from '../../components/ProductModal'
 import { TopBar } from '../../components/TopBar'
+import { useCart } from '../../context/CartContext'
 import { IProduct } from '../../services/Product/Product'
 import { StyledMain } from './styles'
 
@@ -35,6 +36,13 @@ const products: IProduct[] = [
 export const Main = () => {
   const [selectedProduct, setSelectedProduct] = useState<IProduct>()
 
+  const { collapseCartBar } = useCart()
+
+  const handleProductClick = (product: IProduct) => {
+    setSelectedProduct(product)
+    collapseCartBar()
+  }
+
   return (
     <StyledMain>
       <TopBar />
@@ -44,7 +52,7 @@ export const Main = () => {
           <Product
             key={product.id}
             product={product}
-            onClick={() => setSelectedProduct(product)}
+            onClick={() => handleProductClick(product)}
           />
         ))}
       </div>

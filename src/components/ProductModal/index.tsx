@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import { StyledProductModal } from './styles'
 import { FaTimes } from 'react-icons/fa'
@@ -34,6 +34,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
     const handleAddProductOnCart = () => {
       addProduct(selectedProduct!)
       onRequestClose()
+      setProductQuantity(1)
     }
 
     return (

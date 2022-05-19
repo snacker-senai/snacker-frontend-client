@@ -9,6 +9,7 @@ interface ICartContextProps {
   addProduct(product: IProduct): void
   products: IProduct[]
   switchCartExpansion(): void
+  collapseCartBar(): void
   expandedCart: boolean
 }
 
@@ -26,12 +27,17 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     setExpandedCart(!expandedCart)
   }
 
+  const collapseCartBar = () => {
+    setExpandedCart(false)
+  }
+
   return (
     <CartContext.Provider value={{
       addProduct,
       products,
       switchCartExpansion,
-      expandedCart
+      expandedCart,
+      collapseCartBar
     }}>
       {children}
     </CartContext.Provider>

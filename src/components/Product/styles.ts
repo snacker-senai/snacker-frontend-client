@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledProduct = styled.div`
     background-color: white;
-    border: 1px solid rgb(230, 230, 230);
+    border: 1px solid rgb(220, 220, 220);
     border-radius: 4px;
     padding: 15px;
     width: 48%;
@@ -32,7 +32,7 @@ export const StyledProduct = styled.div`
     }
 
     &:hover {
-        border-color: rgb(205, 205, 205);
+        border-color: rgb(195, 195, 195);
     }
 
     @media (max-width: 768px) {

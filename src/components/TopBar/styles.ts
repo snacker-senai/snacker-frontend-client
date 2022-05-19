@@ -24,7 +24,7 @@ export const StyledTopBar = styled.div`
         width: 33%;
 
         input {
-            background-color: rgb(247, 247, 247);
+            background-color: rgb(230, 230, 230);
             padding: 15px;
             border-radius: 12px;
             width: 100%;
@@ -35,12 +35,14 @@ export const StyledTopBar = styled.div`
         display: flex;
         align-items: center;
         justify-content: right;
-        font-size: 30px;
+        font-size: 25px;
         padding: 15px;
 
         svg {
+            color: rgb(33, 33, 33);
             margin-left: 10px;
             margin-right: 10px;
+            cursor: pointer;
         }
     }
 `;

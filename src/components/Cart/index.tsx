@@ -6,15 +6,18 @@ import { StyledCart } from './styles'
 export const Cart = () => {
     const { products, expandedCart } = useCart()
 
-    console.log(products)
+    const { collapseCartBar } = useCart()
 
     return (
         <StyledCart expandedSidebar={expandedCart}>
-            {products.map(product => (
-                <div>
-                    {product.name} - {product.price}
-                </div>
-            ))}
+            <div className="invisible-area" onClick={collapseCartBar}></div>
+            <div className="cart-bar">
+                {products.map(product => (
+                    <div>
+                        {product.name} - {product.price}
+                    </div>
+                ))}
+            </div>
         </StyledCart>
     )
 }

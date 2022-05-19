@@ -5,7 +5,7 @@ import { BsBag } from 'react-icons/bs'
 import { useCart } from '../../context/CartContext'
 
 export const TopBar = () => {
-    const { switchCartExpansion } = useCart()
+    const { switchCartExpansion, collapseCartBar } = useCart()
     
     return (
         <StyledTopBar>
