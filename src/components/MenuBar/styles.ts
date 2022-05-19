@@ -4,16 +4,16 @@ export const StyledMenuBar = styled.div`
     height: 55px;
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(200, 200, 200);
     display: flex;
     align-items: center;
     padding: 15px;
 
     p {
         font-size: 18px;
-        color: rgb(22, 22, 24);
+        color: rgb(51, 51, 54);
         font-weight: bold;
-        margin-right: 8px;
+        margin-right: 14px;
         cursor: pointer;
     }
 
