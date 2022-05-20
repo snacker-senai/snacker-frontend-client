@@ -61,7 +61,7 @@ export const StyledProductModal = styled.div`
                 .comment-input {
                     margin-top: 8px;
                     padding: 15px;
-                    border: 1px solid rgb(200, 200, 200);
+                    border: 1px solid var(--light-gray);
                     border-radius: 5px;
                     width: 100%;
                     outline: none;

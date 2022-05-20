@@ -4,7 +4,7 @@ export const StyledMenuBar = styled.div`
     height: 55px;
     width: 100%;
     background-color: white;
-    border-bottom: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid var(--light-gray);
     display: flex;
     align-items: center;
     padding: 15px;
@@ -18,6 +18,6 @@ export const StyledMenuBar = styled.div`
     }
 
     p.selected {
-        color: rgb(37, 104, 183);
+        color: var(--blue);
     }
 `;

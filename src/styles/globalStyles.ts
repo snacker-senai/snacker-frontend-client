@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
     }
 
+    :root {
+        --light-gray: rgb(200, 200, 200);
+        --dark-gray: rgb(33, 33, 33);
+        --blue: rgb(37, 104, 183);
+        --dark-blue: rgb(27, 94, 173);
+    }
+
     html {
         font-size: 13px;
     }

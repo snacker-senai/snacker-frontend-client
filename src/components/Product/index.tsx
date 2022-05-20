@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatToBrazilianReal } from '../../helpers'
 import { IProduct } from '../../services/Product/Product'
 import { StyledProduct } from './styles'
 
@@ -13,7 +14,7 @@ export const Product = ({ onClick, product }: IProductProps) => {
             <div className="left-session">
                 <p className="title">{product.name}</p>
                 <p className="description">{product.description}</p>
-                <p className="price">R$ {product.price}</p>
+                <p className="price">R$ {formatToBrazilianReal(product.price)}</p>
             </div>
             <div className="right-session">
                 <img src={product.image} alt="lasanha"></img>

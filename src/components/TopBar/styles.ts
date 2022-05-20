@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
-export const StyledTopBar = styled.div`
+interface IStyledTopBar {
+    isCartEmpty: boolean
+}
+
+export const StyledTopBar = styled.div<IStyledTopBar>`
     height: 75px;
     width: 100%;
     background-color: white;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid var(--light-gray);
 
     div.left-session {
         display: flex;
@@ -35,14 +39,40 @@ export const StyledTopBar = styled.div`
         display: flex;
         align-items: center;
         justify-content: right;
-        font-size: 25px;
+        font-size: 22px;
         padding: 15px;
 
-        svg {
-            color: rgb(33, 33, 33);
-            margin-left: 10px;
-            margin-right: 10px;
+        span {
+            display: flex;
+            align-items: center;
+            padding: 7px;
+
+            svg {
+                color: var(--dark-gray);
+                cursor: pointer;
+            }
+        }
+
+        .cart-icon {
             cursor: pointer;
+            background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--blue)'};
+            border-radius: 33px;
+            transition: 0.25s;
+            padding-left: 11px;
+            padding-right: 11px;
+            
+            svg {
+                color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
+            }
+
+            .cart-price {
+                color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
+                font-size: 10px;
+            }
+
+            &:hover {
+                background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--dark-blue)'};
+            }
         }
     }
 `;

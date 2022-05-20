@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { StyledProductModal } from './styles'
 import { FaTimes } from 'react-icons/fa'
 import { IProduct } from '../../services/Product/Product'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useCart } from '../../context/CartContext'
+import { formatToBrazilianReal } from '../../helpers'
 
 interface IProductModalProps {
   onRequestClose: () => void
@@ -32,7 +33,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
     }
 
     const handleAddProductOnCart = () => {
-      addProduct(selectedProduct!)
+      addProduct({ ...selectedProduct!, quantity: productQuantity })
       onRequestClose()
       setProductQuantity(1)
     }
@@ -76,7 +77,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
                     </span>
                   </div>
                   <button className="add-button" onClick={handleAddProductOnCart}>
-                    Adicionar R$ {productQuantity * (selectedProduct?.price || 0)} 
+                    Adicionar R$ {formatToBrazilianReal(productQuantity * (selectedProduct?.price || 0))} 
                   </button>
                 </div>
               </div>

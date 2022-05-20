@@ -4,7 +4,7 @@ export const StyledBottomBar = styled.div`
     height: 80px;
     width: 100%;
     background-color: white;
-    border-top: 1px solid rgb(200, 200, 200);
+    border-top: 1px solid var(--light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
