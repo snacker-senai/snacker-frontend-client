@@ -3,7 +3,7 @@ import { StyledTopBar } from './styles'
 import { BsMegaphone } from 'react-icons/bs'
 import { BsBag } from 'react-icons/bs'
 import { useCart } from '../../context/CartContext'
-import { formatToBrazilianReal } from '../../helpers'
+import { formatToBrazilianReal } from '../../helpers/format'
 
 export const TopBar = () => {
     const { switchCartExpansion, products, getCartTotalPrice } = useCart()

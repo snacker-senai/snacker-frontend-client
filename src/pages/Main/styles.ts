@@ -19,6 +19,6 @@ export const StyledMain = styled.div`
         max-width: 1100px;
         margin-left: auto;
         margin-right: auto;
-        /* overflow-y: scroll; */
+        overflow-y: auto;
     }
 `

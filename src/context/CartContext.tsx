@@ -13,6 +13,7 @@ interface ICartContextProps {
   collapseCartBar(): void
   expandedCart: boolean
   getCartTotalPrice(): number
+  clearCart(): void
 }
 
 interface ICartProduct extends IProduct {
@@ -49,7 +50,11 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     })
 
     return totalPrice
-}
+  }
+
+  const clearCart = () => {
+    setProducts([])
+  }
 
   return (
     <CartContext.Provider value={{
@@ -59,7 +64,8 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
       switchCartExpansion,
       expandedCart,
       collapseCartBar,
-      getCartTotalPrice
+      getCartTotalPrice,
+      clearCart
     }}>
       {children}
     </CartContext.Provider>

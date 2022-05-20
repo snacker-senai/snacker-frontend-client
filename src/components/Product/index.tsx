@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatToBrazilianReal } from '../../helpers'
+import { formatToBrazilianReal } from '../../helpers/format'
 import { IProduct } from '../../services/Product/Product'
 import { StyledProduct } from './styles'
 

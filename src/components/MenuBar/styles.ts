@@ -8,12 +8,17 @@ export const StyledMenuBar = styled.div`
     display: flex;
     align-items: center;
     padding: 15px;
+    overflow-x: auto;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
     p {
         font-size: 18px;
         color: rgb(51, 51, 54);
         font-weight: bold;
-        margin-right: 14px;
+        margin-right: 17px;
         cursor: pointer;
     }
 

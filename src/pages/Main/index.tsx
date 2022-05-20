@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import { Cart } from '../../components/Cart'
 import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
@@ -26,17 +27,6 @@ const products: IProduct[] = [
     description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
     price: 24.90,
     image: "https://img.youtube.com/vi/FrdumyhYaZY/maxresdefault.jpg",
-    productCategory: {
-      id: 1,
-      name: "Massas"
-    }
-  },
-  {
-    id: 3,
-    name: 'ifone xR',
-    description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
-    price: 9900.90,
-    image: " https://www.cnet.com/a/img/resize/bc5d9ad22f31db759158b599cdbf990fbeae4836/hub/2013/09/18/1bf55de0-3c65-11e3-bd7c-14feb5ca9861/iPhone5s_35781409_01.jpg?auto=webp&width=1092",
     productCategory: {
       id: 1,
       name: "Massas"
@@ -72,6 +62,17 @@ export const Main = () => {
         onRequestClose={() => setSelectedProduct(undefined)}
       />
       <Cart />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </StyledMain>
   )
 }

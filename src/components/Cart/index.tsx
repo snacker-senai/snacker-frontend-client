@@ -1,12 +1,19 @@
 import React from 'react'
 import { useCart } from '../../context/CartContext'
-import { formatToBrazilianReal } from '../../helpers'
+import { formatToBrazilianReal } from '../../helpers/format'
 import { StyledCart } from './styles'
 import { FaTimes } from 'react-icons/fa'
+import { emitSuccessToast } from '../../helpers/toast'
 
 
 export const Cart = () => {
-    const { products, expandedCart, collapseCartBar, removeProduct, getCartTotalPrice } = useCart()
+    const { products, expandedCart, collapseCartBar, removeProduct, getCartTotalPrice, clearCart } = useCart()
+
+    const handleFinishOrder = () => {
+        emitSuccessToast('Pedido realizado com sucesso!')
+        collapseCartBar()
+        clearCart()
+    }
 
     return (
         <StyledCart expandedSidebar={expandedCart} isCartEmpty={!products.length}>
@@ -43,7 +50,7 @@ export const Cart = () => {
                                 <span>Total</span>
                                 <span>R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
                             </div>
-                            <button className="order-button">Realizar pedido</button>
+                            <button className="order-button" onClick={handleFinishOrder}>Realizar pedido</button>
                         </div>
                     </>
                 )}

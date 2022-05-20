@@ -5,7 +5,7 @@ import { FaTimes } from 'react-icons/fa'
 import { IProduct } from '../../services/Product/Product'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useCart } from '../../context/CartContext'
-import { formatToBrazilianReal } from '../../helpers'
+import { formatToBrazilianReal } from '../../helpers/format'
 
 interface IProductModalProps {
   onRequestClose: () => void

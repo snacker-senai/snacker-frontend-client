@@ -121,6 +121,11 @@ export const StyledCart = styled.div<IStyledCartProps>`
             font-weight: 500;
             letter-spacing: 0.5px;
             border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--dark-blue);
+            }
         }
 
         .cart-total-price {

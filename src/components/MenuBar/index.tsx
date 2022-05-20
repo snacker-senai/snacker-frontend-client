@@ -1,39 +1,51 @@
 import React, { useState } from 'react'
+import { ICategory } from '../../services/Category/Category'
 import { StyledMenuBar } from './styles'
 
-export const MenuBar = () => {
-    const [selectedMenu, setSelectedMenu] = useState(0)
+const categories: ICategory[] = [
+    {
+        id: 1,
+        title: 'Massas'
+    },
+    {
+        id: 2,
+        title: 'Bebidas'
+    },
+    {
+        id: 3,
+        title: 'Risotos'
+    },
+    {
+        id: 4,
+        title: 'Assados'
+    },
+    {
+        id: 5,
+        title: 'Saladas'
+    },
+    {
+        id: 6,
+        title: 'Hamburgers'
+    },
+]
 
-    const isMenuSelected = (menu: number) => {
-        return selectedMenu === menu ? "selected" : ""
+export const MenuBar = () => {
+    const [selectedMenu, setSelectedMenu] = useState<ICategory>(categories[0])
+
+    const isMenuSelected = (category: ICategory) => {
+        return selectedMenu === category ? "selected" : ""
     }
 
     return (
         <StyledMenuBar>
-            <p 
-                className={isMenuSelected(0)}
-                onClick={() => setSelectedMenu(0)}
-            >
-                Bebidas
-            </p>
-            <p 
-                className={isMenuSelected(1)}
-                onClick={() => setSelectedMenu(1)}
-            >
-                Massas
-            </p>
-            <p 
-                className={isMenuSelected(2)}
-                onClick={() => setSelectedMenu(2)}
-            >
-                Risotos
-            </p>
-            <p 
-                className={isMenuSelected(3)}
-                onClick={() => setSelectedMenu(3)}
-            >
-                Assados
-            </p>
+            {categories.map(category => (
+                <p
+                    className={isMenuSelected(category)}
+                    onClick={() => setSelectedMenu(category)}
+                >
+                    {category.title}
+                </p>
+            ))}
         </StyledMenuBar>
     )
 }
