@@ -6,38 +6,15 @@ import { Product } from '../../components/Product'
 import { ProductModal } from '../../components/ProductModal'
 import { TopBar } from '../../components/TopBar'
 import { useCart } from '../../context/CartContext'
+import { useMenu } from '../../context/MenuContext'
 import { IProduct } from '../../services/Product/Product'
 import { StyledMain } from './styles'
-
-const products: IProduct[] = [
-  {
-    id: 1,
-    name: 'Lasagna',
-    description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
-    price: 19.90,
-    image: "https://img.youtube.com/vi/FrdumyhYaZY/maxresdefault.jpg",
-    productCategory: {
-      id: 1,
-      name: "Massas"
-    }
-  },
-  {
-    id: 2,
-    name: 'Macarrão',
-    description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
-    price: 24.90,
-    image: "https://img.youtube.com/vi/FrdumyhYaZY/maxresdefault.jpg",
-    productCategory: {
-      id: 1,
-      name: "Massas"
-    }
-  }
-]
 
 export const Main = () => {
   const [selectedProduct, setSelectedProduct] = useState<IProduct>()
 
   const { collapseCartBar } = useCart()
+  const { categoriesWithProducts, categoriesRef } = useMenu()
 
   const handleProductClick = (product: IProduct) => {
     setSelectedProduct(product)
@@ -49,13 +26,26 @@ export const Main = () => {
       <TopBar />
       <MenuBar />
       <div className="content">
-        {products.map(product => (
-          <Product
-            key={product.id}
-            product={product}
-            onClick={() => handleProductClick(product)}
-          />
-        ))}
+        <div className="products-container">
+          {categoriesWithProducts.map((category, index) => (
+            <>
+              {category.products.length > 0 && (
+                <div ref={el => categoriesRef.current[index] = el} >
+                  <h2 className="category">{category.name}</h2>
+                  <div className="products">
+                    {category.products.map(product => (
+                      <Product
+                        key={product.id}
+                        product={product}
+                        onClick={() => handleProductClick(product)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          ))}
+        </div>
       </div>
       <ProductModal
         selectedProduct={selectedProduct}

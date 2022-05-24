@@ -4,7 +4,7 @@ export interface IProduct {
     description: string
     price: number
     image: string
-    productCategory: {
+    productCategory?: {
         id: number
         name: string
     }

@@ -11,6 +11,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--light-gray);
+    position: fixed;
 
     div.left-session {
         display: flex;
@@ -28,7 +29,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
         width: 33%;
 
         input {
-            background-color: rgb(230, 230, 230);
+            background-color: rgb(242, 242, 242);
             padding: 15px;
             border-radius: 12px;
             width: 100%;

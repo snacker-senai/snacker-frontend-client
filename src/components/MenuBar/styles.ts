@@ -9,6 +9,8 @@ export const StyledMenuBar = styled.div`
     align-items: center;
     padding: 15px;
     overflow-x: auto;
+    position: fixed;
+    top: 75px;
 
     ::-webkit-scrollbar {
         display: none;

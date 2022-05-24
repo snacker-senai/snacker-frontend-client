@@ -27,4 +27,20 @@ export const GlobalStyle = createGlobalStyle`
     body > #root > div {
         min-height: 100vh;
     }
+
+    ::-webkit-scrollbar {
+    width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background: #999;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
 `
