@@ -12,7 +12,7 @@ export const StyledCart = styled.div<IStyledCartProps>`
     transition: width 0.2s ease-in-out;
     z-index: 999;
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 75px;
     display: flex;

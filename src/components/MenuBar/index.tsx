@@ -40,12 +40,7 @@ export const MenuBar = () => {
     }
 
     const scrollToCategory = (index: number) => {
-        categoriesRef.current[index]!.scrollIntoView({ block: 'start', behavior: 'auto' })
-
-        const scrolledY = window.scrollY
-        if (scrolledY) {
-            window.scroll(0, scrolledY - 140);
-        }
+        window.scroll(0, categoriesRef.current[index]!.offsetTop - 140)
     }
 
     return (
