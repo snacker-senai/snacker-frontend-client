@@ -1,56 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
 import { useMenu } from '../../context/MenuContext'
-import { ICategory } from '../../services/Category/Category'
+import { ICategory, ICategoryWithProducts } from '../../services/Category/Category'
 import { StyledMenuBar } from './styles'
 
-const categories: ICategory[] = [
-    {
-        id: 1,
-        title: 'Massas'
-    },
-    {
-        id: 2,
-        title: 'Bebidas'
-    },
-    {
-        id: 3,
-        title: 'Risotos'
-    },
-    {
-        id: 4,
-        title: 'Assados'
-    },
-    {
-        id: 5,
-        title: 'Saladas'
-    },
-    {
-        id: 6,
-        title: 'Hamburgers'
-    },
-]
-
 export const MenuBar = () => {
-    const [selectedMenu, setSelectedMenu] = useState<ICategory>(categories[0])
+    const { categoriesRef, categoriesWithProducts } = useMenu()
 
-    const { categoriesRef } = useMenu()
+    const [selectedMenu, setSelectedMenu] = useState<ICategoryWithProducts>(categoriesWithProducts[0])
 
     const isMenuSelected = (category: ICategory) => {
         return selectedMenu === category ? "selected" : ""
     }
 
     const scrollToCategory = (index: number) => {
-        window.scroll(0, categoriesRef.current[index]!.offsetTop - 140)
+        window.scrollTo({ top: categoriesRef.current[index]!.offsetTop - 140, behavior: 'smooth' })
+    }
+
+    const handleCategoryClick = (category: ICategoryWithProducts, index: number) => {
+        setSelectedMenu(category)
+        scrollToCategory(index)
     }
 
     return (
         <StyledMenuBar>
-            {categories.map((category, index) => (
+            {categoriesWithProducts.map((category, index) => (
                 <p
                     className={isMenuSelected(category)}
-                    onClick={() => { setSelectedMenu(category); scrollToCategory(index) }}
+                    onClick={() => handleCategoryClick(category, index)}
                 >
-                    {category.title}
+                    {category.name}
                 </p>
             ))}
         </StyledMenuBar>

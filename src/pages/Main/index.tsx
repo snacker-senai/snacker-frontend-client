@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { Cart } from '../../components/Cart'
 import { MenuBar } from '../../components/MenuBar'
@@ -14,12 +15,16 @@ export const Main = () => {
   const [selectedProduct, setSelectedProduct] = useState<IProduct>()
 
   const { collapseCartBar } = useCart()
-  const { categoriesWithProducts, categoriesRef } = useMenu()
+  const { categoriesWithProducts, categoriesRef, getAllCategoriesWithProducts } = useMenu()
 
   const handleProductClick = (product: IProduct) => {
     setSelectedProduct(product)
     collapseCartBar()
   }
+
+  useEffect(() => {
+    getAllCategoriesWithProducts()
+  }, [])
 
   return (
     <StyledMain>
