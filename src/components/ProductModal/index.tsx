@@ -6,6 +6,7 @@ import { IProduct } from '../../services/Product/Product'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
+import { emitInfoToast } from '../../helpers/toast'
 
 interface IProductModalProps {
   onRequestClose: () => void
@@ -36,6 +37,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
       addProduct({ ...selectedProduct!, quantity: productQuantity })
       onRequestClose()
       setProductQuantity(1)
+      emitInfoToast('Produto adicionado no carrinho!')
     }
 
     return (
