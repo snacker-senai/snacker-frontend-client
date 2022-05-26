@@ -4,7 +4,7 @@ export const StyledProduct = styled.div`
     background-color: white;
     border: 1px solid rgb(220, 220, 220);
     border-radius: 4px;
-    padding: 15px;
+    padding: 14px;
     width: 48%;
     height: 175px;
     margin-bottom: 14px;
@@ -17,6 +17,7 @@ export const StyledProduct = styled.div`
         display: flex;
         flex-direction: column;
         width: 70%;
+        padding-right: 8px;
     }
 
     .right-session {

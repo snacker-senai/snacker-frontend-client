@@ -5,14 +5,16 @@ import { BsBag } from 'react-icons/bs'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
 import { useMenu } from '../../context/MenuContext'
+import { useAuth } from '../../context/AuthContext'
 
 export const TopBar = () => {
     const { switchCartExpansion, products, getCartTotalPrice } = useCart()
     const { search } = useMenu()
+    const { user } = useAuth()
     
     return (
         <StyledTopBar isCartEmpty={!products.length}>
-            <div className="left-session">Mesa 1</div>
+            <div className="left-session">Mesa {user?.table}</div>
             <div className="center-session">
                 <input type="text" placeholder="Busque pelo produto" onChange={(e) => search(e.target.value)} />
             </div>

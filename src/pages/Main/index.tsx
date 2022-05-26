@@ -33,7 +33,7 @@ export const Main = () => {
       <div className="content">
         <div className="products-container">
           {categoriesWithProducts.map((category, index) => (
-            <>
+            <React.Fragment key={category.id}>
               {category.products.length > 0 && (
                 <div ref={el => categoriesRef.current[index] = el} >
                   <h2 className="category">{category.name}</h2>
@@ -48,7 +48,7 @@ export const Main = () => {
                   </div>
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>

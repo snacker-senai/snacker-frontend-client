@@ -26,6 +26,7 @@ export const MenuBar = () => {
         <StyledMenuBar>
             {categoriesWithProducts.map((category, index) => (
                 <p
+                    key={category.id}
                     className={isMenuSelected(category)}
                     onClick={() => handleCategoryClick(category, index)}
                 >

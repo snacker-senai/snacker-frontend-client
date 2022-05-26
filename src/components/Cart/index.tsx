@@ -29,7 +29,7 @@ export const Cart = () => {
                     <>
                         <div className="product-list">
                             {products.map(product => (
-                                <div className="product-container">
+                                <div className="product-container" key={product.id}>
                                     <div className="product-information">
                                         <div className="product-name">
                                             {product.quantity}x {product.name}
