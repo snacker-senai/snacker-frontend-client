@@ -32,6 +32,16 @@ export const BillModal = () => {
     setBill(bill)
   }
 
+  const getTotalPrice = () => {
+    let totalPrice = 0
+
+    bill?.orders.forEach(order => {
+      order.products.forEach(product => totalPrice += product.price * product.quantity)
+    })
+
+    return totalPrice
+  }
+
   const renderBillProducts = (order: IOrder) => {
     let subtotal = 0
 
@@ -65,15 +75,18 @@ export const BillModal = () => {
         style={customStyles}
       >
         <StyledBillModal>
-        <div className="header">
-              <div></div>
-              <div className="modal-title">Lista de pedidos</div>
-              <div className="close-button" onClick={() => setIsBillModalVisible(false)}>
-                <FaTimes />
-              </div>
+          <div className="header">
+            <div></div>
+            <div className="modal-title">Lista de pedidos</div>
+            <div className="close-button" onClick={() => setIsBillModalVisible(false)}>
+              <FaTimes />
             </div>
-           <div className="content">
+          </div>
+          <div className="content">
             {bill?.orders.map(renderBillProducts)}
+          </div>
+          <div className="totalPrice">
+            Total: R$ {formatToBrazilianReal(getTotalPrice())}
           </div>
         </StyledBillModal>
       </Modal>

@@ -47,11 +47,17 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             display: flex;
             align-items: center;
             padding: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
 
             svg {
                 color: var(--dark-gray);
                 cursor: pointer;
             }
+        }
+
+        .bill-icon {
+            font-size: 20px;
         }
 
         .cart-icon {

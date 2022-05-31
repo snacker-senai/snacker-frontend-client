@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyledTopBar } from './styles'
-import { BsMegaphone } from 'react-icons/bs'
-import { BsBag } from 'react-icons/bs'
+import { BsMegaphone, BsBag, BsLayoutTextSidebarReverse } from 'react-icons/bs'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
 import { useMenu } from '../../context/MenuContext'
@@ -22,14 +21,14 @@ export const TopBar = () => {
                 <span>
                     <BsMegaphone />
                 </span>
+                <span onClick={() => setIsBillModalVisible(true)} className="bill-icon">
+                    <BsLayoutTextSidebarReverse/>
+                </span>
                 <span className="cart-icon" onClick={switchCartExpansion}>
                     <BsBag />
                     {!!products.length && (
                         <span className="cart-price">R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
                     )}
-                </span>
-                <span onClick={() => setIsBillModalVisible(true)}>
-                    <BsBag/>
                 </span>
             </div>
         </StyledTopBar>
