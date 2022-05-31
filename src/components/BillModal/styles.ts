@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const StyledBillModal = styled.div`
     height: 100%;
+    width: 650px;
+    max-width: calc(100vw - 75px);
 
     .header {
         display: flex;
@@ -9,6 +11,7 @@ export const StyledBillModal = styled.div`
         font-weight: 600;
         font-size: 1.21em;
         color: rgb(63, 63, 63);
+        margin-bottom: 20px;
         
         .close-button {
             cursor: pointer;
@@ -27,16 +30,20 @@ export const StyledBillModal = styled.div`
                 padding: 2px;
                 
                 .product-name {
-                    font-size: 1.18em;
+                    font-size: 1.05em;
                     margin-right: 8px;
                     color: rgb(60, 60, 60);
                     font-weight: bold;
                 }
 
                 .product-price {
-                    font-size: 1em;
+                    font-size: 0.95em;
                     color: rgb(70, 70, 70);
                 }
+            }
+
+            .subtotal {
+                font-weight: bold;
             }
         }
     }

@@ -13,10 +13,13 @@ const customStyles = {
     background: "rgba(0, 0, 0, 0.25)"
   },
   content: {
-    width: '100%',
-    maxWidth: '700px',
-    // left:
-    // transform: 'translate(-50%, -50%)',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    maxWidth: '100vw'
   }
 }
 
@@ -30,6 +33,10 @@ export const BillModal = () => {
   }
 
   const renderBillProducts = (order: IOrder) => {
+    let subtotal = 0
+
+    order.products.forEach(product => subtotal += product.price * product.quantity)
+
     return (
       <div className="order-card">
         {order.products.map((product) => (
@@ -38,6 +45,9 @@ export const BillModal = () => {
             <div className="product-price">R$ {formatToBrazilianReal(product.price * product.quantity)}</div>
           </div>
         ))}
+        <div style={{ display: 'flex', justifyContent: 'end' }}>
+          <div className="subtotal">Subtotal R$ {formatToBrazilianReal(subtotal)}</div>
+        </div>
       </div>
     )
   }
