@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from 'react'
+import { AuthService } from '../services/Auth/AuthService'
 
 export interface IUser {
-    table: string
+    number: string
 }
 
 interface IAuthProviderProps {
@@ -12,7 +13,7 @@ interface IAuthContextProps {
   logout(): void
   user: IUser | null
   setUser(user: IUser): void
-  newBill(token: string): Promise<boolean>
+  getClientSessionInfo(): void
 }
 
 export const AuthContext = createContext({} as IAuthContextProps)
@@ -26,14 +27,9 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     window.location.replace('/unauthorized')
   }
 
-  const newBill = async (token: string) => {
-    function timeout(ms: number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    await timeout(3000)
-
-    return true
+  const getClientSessionInfo = async () => {
+      const { number } = await AuthService.getCurrentUser()
+      setUser({ number })
   }
 
   return (
@@ -41,7 +37,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       logout,
       user,
       setUser,
-      newBill
+      getClientSessionInfo
     }}>
       {children}
     </AuthContext.Provider>

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import { BillModal } from '../../components/BillModal'
 import { Cart } from '../../components/Cart'
 import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
@@ -56,6 +57,7 @@ export const Main = () => {
         selectedProduct={selectedProduct}
         onRequestClose={() => setSelectedProduct(undefined)}
       />
+      <BillModal />
       <Cart />
       <ToastContainer
         position="top-center"

@@ -22,6 +22,8 @@ interface IMenuContextProps {
   search(value: string): void
   categoriesRef: React.MutableRefObject<(HTMLDivElement | null)[]>
   getAllCategoriesWithProducts(): void
+  isBillModalVisible: boolean
+  setIsBillModalVisible(value: boolean): void
 }
 
 export const MenuContext = createContext({} as IMenuContextProps)
@@ -32,6 +34,8 @@ export const MenuProvider = ({ children }: IMenuProviderProps) => {
 
   /** Categorias e produtos que serão mostrados na tela */
   const [categoriesWithProducts, setCategoriesWithProducts] = useState<CategoryWithProduct[]>([])
+
+  const [isBillModalVisible, setIsBillModalVisible] = useState(false)
 
   const categoriesRef = useRef<Array<HTMLDivElement | null>>([])
 
@@ -70,7 +74,9 @@ export const MenuProvider = ({ children }: IMenuProviderProps) => {
         categoriesWithProducts,
         search,
         categoriesRef,
-        getAllCategoriesWithProducts
+        getAllCategoriesWithProducts,
+        isBillModalVisible,
+        setIsBillModalVisible
     }}>
       {children}
     </MenuContext.Provider>

@@ -18,7 +18,7 @@ api.interceptors.request.use((config: AxiosRequestConfig) => {
 api.interceptors.response.use(response => {
   return response
 }, error => {
-  if (error.response.status === 401) {
+  if (error.response.status === 401 || error.response.status === 403) {
     window.location.href = '/unauthorized'
     localStorage.removeItem('accessToken')
   }

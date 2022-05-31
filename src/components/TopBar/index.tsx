@@ -9,12 +9,12 @@ import { useAuth } from '../../context/AuthContext'
 
 export const TopBar = () => {
     const { switchCartExpansion, products, getCartTotalPrice } = useCart()
-    const { search } = useMenu()
+    const { search, setIsBillModalVisible } = useMenu()
     const { user } = useAuth()
     
     return (
         <StyledTopBar isCartEmpty={!products.length}>
-            <div className="left-session">Mesa {user?.table}</div>
+            <div className="left-session">Mesa {user?.number}</div>
             <div className="center-session">
                 <input type="text" placeholder="Busque pelo produto" onChange={(e) => search(e.target.value)} />
             </div>
@@ -27,6 +27,9 @@ export const TopBar = () => {
                     {!!products.length && (
                         <span className="cart-price">R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
                     )}
+                </span>
+                <span onClick={() => setIsBillModalVisible(true)}>
+                    <BsBag/>
                 </span>
             </div>
         </StyledTopBar>

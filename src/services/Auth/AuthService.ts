@@ -1,13 +1,9 @@
-// import { api } from "../api"
+import { api } from "../api"
 
 export class AuthService {
     static async getCurrentUser () {
-        // const { data } = await api.get('/usuario/logado')
+        const { data } = await api.get<{ number: string }>('/Auth/ClientSessionInfo')
     
-        // return data
-
-        return {
-            table: '1'
-        }
-      }
+        return data
+    }
 }
