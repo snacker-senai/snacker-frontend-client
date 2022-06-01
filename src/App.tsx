@@ -2,13 +2,13 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Main } from './pages/Main'
 import { GlobalStyle } from './styles/globalStyles'
-import 'react-toastify/dist/ReactToastify.css'
 import { PrivateRoute } from './components/PrivateRoute'
 import { MenuProvider } from './context/MenuContext'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
 import { Unauthorized } from './pages/Unauthorized'
 import { Authorizer } from './components/Authorizer'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const App = () => {
   return (

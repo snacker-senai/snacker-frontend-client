@@ -6,6 +6,7 @@ import { formatToBrazilianReal } from '../../helpers/format'
 import { IBill } from '../../services/Bill/Bill'
 import { BillService } from '../../services/Bill/BillService'
 import { IOrder } from '../../services/Order/Order'
+import { IOrderWithProducts, IProductWithQuantity, OrderService } from '../../services/Order/OrderService'
 import { StyledBillModal } from './styles'
 
 const customStyles = {
@@ -25,34 +26,37 @@ const customStyles = {
 
 export const BillModal = () => {
   const { isBillModalVisible, setIsBillModalVisible } = useMenu()
-  const [bill, setBill] = useState<IBill>()
+  const [orders, setOrders] = useState<IOrderWithProducts[]>([])
 
   const getCurrentBill = async () => {
-    const bill = await BillService.getCurrentBill()
-    setBill(bill)
+    const orders = await OrderService.getAll()
+    setOrders(orders)
   }
 
   const getTotalPrice = () => {
     let totalPrice = 0
 
-    bill?.orders.forEach(order => {
-      order.products.forEach(product => totalPrice += product.price * product.quantity)
+    orders.forEach(order => {
+      order.productsWithQuantity.forEach(product => totalPrice += 1 * product.quantity)
     })
 
     return totalPrice
   }
 
-  const renderBillProducts = (order: IOrder) => {
+  const renderBillProducts = (products: IProductWithQuantity[]) => {
     let subtotal = 0
 
-    order.products.forEach(product => subtotal += product.price * product.quantity)
+    
+    orders.forEach(order => {
+      order.productsWithQuantity.forEach(product => subtotal += 1 * product.quantity)
+    })
 
     return (
       <div className="order-card">
-        {order.products.map((product) => (
+        {products.map((product) => (
           <div className="product-info">
-            <div className="product-name">{product.quantity}x {product.name}</div>
-            <div className="product-price">R$ {formatToBrazilianReal(product.price * product.quantity)}</div>
+            <div className="product-name">{product.quantity}x {product.productName}</div>
+            <div className="product-price">R$ {formatToBrazilianReal(1 * product.quantity)}</div>
           </div>
         ))}
         <div style={{ display: 'flex', justifyContent: 'end' }}>
@@ -83,7 +87,7 @@ export const BillModal = () => {
             </div>
           </div>
           <div className="content">
-            {bill?.orders.map(renderBillProducts)}
+            {orders.map(order => renderBillProducts(order.productsWithQuantity))}
           </div>
           <div className="totalPrice">
             Total: R$ {formatToBrazilianReal(getTotalPrice())}

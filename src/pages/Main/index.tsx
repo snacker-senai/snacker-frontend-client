@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { BillModal } from '../../components/BillModal'
 import { Cart } from '../../components/Cart'
+import { Loading } from '../../components/Loading'
 import { MenuBar } from '../../components/MenuBar'
 import { Product } from '../../components/Product'
 import { ProductModal } from '../../components/ProductModal'
 import { TopBar } from '../../components/TopBar'
+import { useAuth } from '../../context/AuthContext'
 import { useCart } from '../../context/CartContext'
 import { useMenu } from '../../context/MenuContext'
 import { IProduct } from '../../services/Product/Product'
@@ -16,6 +18,7 @@ export const Main = () => {
   const [selectedProduct, setSelectedProduct] = useState<IProduct>()
 
   const { collapseCartBar } = useCart()
+  const { user } = useAuth()
   const { categoriesWithProducts, categoriesRef, getAllCategoriesWithProducts } = useMenu()
 
   const handleProductClick = (product: IProduct) => {
@@ -23,12 +26,15 @@ export const Main = () => {
     collapseCartBar()
   }
 
+  const showLoading = categoriesWithProducts.length < 1 || !user?.number
+
   useEffect(() => {
     getAllCategoriesWithProducts()
   }, [])
 
   return (
     <StyledMain>
+      <Loading visible={showLoading} />
       <TopBar />
       <MenuBar />
       <div className="content">
