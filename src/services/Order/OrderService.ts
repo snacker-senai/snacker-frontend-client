@@ -28,7 +28,7 @@ export class OrderService {
   }
 
   static async getAll () {
-    const { data } = await api.get<IOrderWithProducts[]>('/Order')
+    const { data } = await api.get<IOrderWithProducts[]>('/Order/ByBill')
 
     return data
   }
