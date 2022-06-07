@@ -118,4 +118,39 @@ export const StyledProductModal = styled.div`
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left-session {
+            height: auto !important;
+            width: 100% !important;
+            padding: 10px !important;
+        }
+
+        .right-session {
+            padding: 10px !important;
+            width: 100% !important;
+            flex-grow: 1 !important;
+        }
+
+        .footer {
+            flex-grow: 1 !important;
+            flex-direction: column !important;
+
+            .quantity-container {
+                margin: 0 !important;
+                margin-bottom: 12px !important;
+                justify-content: space-between !important;
+            }
+            
+            div, button {
+                width: 100%;
+                margin-bottom: 10px !important;
+            }
+        }
+    }
 `
