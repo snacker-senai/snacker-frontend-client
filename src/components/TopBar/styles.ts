@@ -82,4 +82,10 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             }
         }
     }
+
+    @media (max-width: 768px) {
+        div.left-session {
+            font-size: 1.5em !important;
+        }
+    }
 `;
