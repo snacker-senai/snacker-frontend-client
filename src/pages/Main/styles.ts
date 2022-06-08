@@ -21,6 +21,7 @@ export const StyledMain = styled.div`
     .input-container {
         width: 100%;
         position: relative;
+        z-index: 0;
 
         input {
             background-color: rgb(240, 240, 240);

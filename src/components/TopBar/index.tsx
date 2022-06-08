@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { StyledTopBar } from './styles'
 import { BsMegaphone, BsBag, BsLayoutTextSidebarReverse } from 'react-icons/bs'
 import { useCart } from '../../context/CartContext'

@@ -11,6 +11,7 @@ export const StyledMenuBar = styled.div`
     overflow-x: auto;
     position: fixed;
     top: 75px;
+    z-index: 1000;
 
     ::-webkit-scrollbar {
         display: none;

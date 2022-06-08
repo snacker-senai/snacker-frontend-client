@@ -12,6 +12,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
     background-color: white;
     border-bottom: 1px solid var(--light-gray);
     position: fixed;
+    z-index: 1000;
 
     div.menu-sessions {
         display: flex;
