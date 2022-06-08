@@ -11,7 +11,8 @@ export const Unauthorized = () => {
 
     return (
         <UnauthorizedStyles>
-            <h1>Unauthorized</h1>
+            <h1>Sessão inválida!</h1>
+            <h2>Escaneie o QR Code para acessar o cardápio.</h2>
         </UnauthorizedStyles>
     )
 }
