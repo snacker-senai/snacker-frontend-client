@@ -18,6 +18,7 @@ export interface IProductWithQuantity {
   productId: number
   productName: string
   quantity: number
+  price: number
 }
 
 export class OrderService {

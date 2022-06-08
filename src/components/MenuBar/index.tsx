@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMenu } from '../../context/MenuContext'
 import { ICategory, ICategoryWithProducts } from '../../services/Category/Category'
 import { StyledMenuBar } from './styles'
@@ -7,7 +7,7 @@ import { StyledMenuBar } from './styles'
 export const MenuBar = () => {
     const { categoriesRef, categoriesWithProducts } = useMenu()
 
-    const [selectedMenu, setSelectedMenu] = useState<ICategoryWithProducts>(categoriesWithProducts[0])
+    const [selectedMenu, setSelectedMenu] = useState<ICategoryWithProducts>()
 
     const isMenuSelected = (category: ICategory) => {
         return selectedMenu === category ? "selected" : ""
@@ -21,6 +21,12 @@ export const MenuBar = () => {
         setSelectedMenu(category)
         scrollToCategory(index)
     }
+
+    useEffect(() => {
+        if (!!categoriesWithProducts.length) {
+            setSelectedMenu(categoriesWithProducts[0])
+        }
+    }, [categoriesWithProducts])
 
     return (
         <StyledMenuBar>
