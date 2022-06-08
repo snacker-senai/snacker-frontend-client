@@ -140,4 +140,12 @@ export const StyledCart = styled.div<IStyledCartProps>`
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .cart-bar {
+            padding: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
 `

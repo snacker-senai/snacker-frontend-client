@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const StyledProductModal = styled.div`
-    height: 100%;
+    height: calc(100vh - 90px);
+    max-width: calc(100vw - 90px);
 
     .header {
         display: flex;
@@ -120,6 +121,9 @@ export const StyledProductModal = styled.div`
     }
 
     @media (max-width: 768px) {
+        height: calc(100vh - 70px);
+        max-width: calc(100vw - 65px);
+
         .content {
             display: flex;
             flex-direction: column;
