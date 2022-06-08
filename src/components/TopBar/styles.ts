@@ -7,11 +7,17 @@ interface IStyledTopBar {
 export const StyledTopBar = styled.div<IStyledTopBar>`
     height: 75px;
     width: 100%;
-    background-color: white;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    background-color: white;
     border-bottom: 1px solid var(--light-gray);
     position: fixed;
+
+    div.menu-sessions {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+    }
 
     div.left-session {
         display: flex;
@@ -23,16 +29,28 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
     }
 
     div.center-session {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 33%;
+        width: 40%;
 
         input {
             background-color: rgb(242, 242, 242);
             padding: 15px;
+            padding-right: 48px;
             border-radius: 12px;
             width: 100%;
+            outline: none;
+        }
+
+        svg {
+            position: absolute;
+            font-size: 22px;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgb(80, 80, 80);
         }
     }
 
@@ -86,6 +104,13 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
     @media (max-width: 768px) {
         div.left-session {
             font-size: 1.5em !important;
+        }
+
+        div.center-session {
+            padding-top: 3px;
+            padding-left: 12px;
+            padding-right: 12px;
+            width: 100%;
         }
     }
 `;

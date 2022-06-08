@@ -13,13 +13,14 @@ import { useCart } from '../../context/CartContext'
 import { useMenu } from '../../context/MenuContext'
 import { IProduct } from '../../services/Product/Product'
 import { StyledMain } from './styles'
+import { FiSearch } from 'react-icons/fi'
 
 export const Main = () => {
   const [selectedProduct, setSelectedProduct] = useState<IProduct>()
 
   const { collapseCartBar } = useCart()
   const { user } = useAuth()
-  const { categoriesWithProducts, categoriesRef, getAllCategoriesWithProducts } = useMenu()
+  const { categoriesWithProducts, categoriesRef, getAllCategoriesWithProducts, search, isDesktop } = useMenu()
 
   const handleProductClick = (product: IProduct) => {
     setSelectedProduct(product)
@@ -38,6 +39,12 @@ export const Main = () => {
       <TopBar />
       <MenuBar />
       <div className="content">
+        {!isDesktop && (
+          <div className="input-container">
+            <input type="text" placeholder="Busque pelo produto" onChange={(e) => search(e.target.value)} />
+            <FiSearch />
+          </div>
+        )}
         <div className="products-container">
           {categoriesWithProducts.map((category, index) => (
             <React.Fragment key={category.id}>

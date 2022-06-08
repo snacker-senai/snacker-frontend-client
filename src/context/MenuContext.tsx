@@ -2,15 +2,15 @@ import React, { createContext, useContext, useEffect, useRef, useState } from 'r
 import { CategoryService } from '../services/Category/CategoryService'
 
 type CategoryWithProduct = {
+  id: number
+  name: string
+  products: {
     id: number
     name: string
-    products: {
-        id: number
-        name: string
-        description: string
-        price: number
-        image: string
-    }[]
+    description: string
+    price: number
+    image: string
+  }[]
 }
 
 interface IMenuProviderProps {
@@ -24,6 +24,7 @@ interface IMenuContextProps {
   getAllCategoriesWithProducts(): void
   isBillModalVisible: boolean
   setIsBillModalVisible(value: boolean): void
+  isDesktop: boolean
 }
 
 export const MenuContext = createContext({} as IMenuContextProps)
@@ -38,6 +39,15 @@ export const MenuProvider = ({ children }: IMenuProviderProps) => {
   const [isBillModalVisible, setIsBillModalVisible] = useState(false)
 
   const categoriesRef = useRef<Array<HTMLDivElement | null>>([])
+
+  /** Responsividade */
+  const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth > 768)
+
+  useEffect(() => {
+    const updateMedia = () => setIsDesktop(window.innerWidth > 768)
+    window.addEventListener('resize', updateMedia)
+    return () => window.removeEventListener('resize', updateMedia)
+  })
 
   useEffect(() => {
     categoriesRef.current = categoriesRef.current.slice(0, categoriesWithProducts.length);
@@ -76,7 +86,8 @@ export const MenuProvider = ({ children }: IMenuProviderProps) => {
         categoriesRef,
         getAllCategoriesWithProducts,
         isBillModalVisible,
-        setIsBillModalVisible
+        setIsBillModalVisible,
+        isDesktop
     }}>
       {children}
     </MenuContext.Provider>
