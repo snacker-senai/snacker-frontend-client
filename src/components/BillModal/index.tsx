@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
+import { TailSpin } from 'react-loader-spinner'
 import Modal from 'react-modal'
 import { useMenu } from '../../context/MenuContext'
 import { formatToBrazilianReal } from '../../helpers/format'
@@ -34,7 +35,7 @@ export const BillModal = () => {
     let totalPrice = 0
 
     orders.forEach(order => {
-      order.productsWithQuantity.forEach(product => totalPrice += 1 * product.quantity)
+      order.productsWithQuantity.forEach(product => totalPrice += product.price * product.quantity)
     })
 
     return totalPrice
@@ -43,17 +44,14 @@ export const BillModal = () => {
   const renderBillProducts = (products: IProductWithQuantity[]) => {
     let subtotal = 0
 
-    
-    orders.forEach(order => {
-      order.productsWithQuantity.forEach(product => subtotal += 1 * product.quantity)
-    })
+    products.forEach(product => subtotal += product.price * product.quantity)
 
     return (
       <div className="order-card">
         {products.map((product) => (
           <div className="product-info">
             <div className="product-name">{product.quantity}x {product.productName}</div>
-            <div className="product-price">R$ {formatToBrazilianReal(1 * product.quantity)}</div>
+            <div className="product-price">R$ {formatToBrazilianReal(product.price * product.quantity)}</div>
           </div>
         ))}
         <div style={{ display: 'flex', justifyContent: 'end' }}>
@@ -84,11 +82,22 @@ export const BillModal = () => {
             </div>
           </div>
           <div className="content">
-            {orders.map(order => renderBillProducts(order.productsWithQuantity))}
+            {!!orders.length && (
+              <>
+                {orders.map(order => renderBillProducts(order.productsWithQuantity))}
+              </>
+            )}
+            {!orders.length && (
+              <div className="loading">
+                <TailSpin color="var(--blue)" height={80} width={80} />
+              </div>
+            )}
           </div>
-          <div className="totalPrice">
-            Total: R$ {formatToBrazilianReal(getTotalPrice())}
-          </div>
+          {!!orders.length && (
+            <div className="totalPrice">
+              Total: R$ {formatToBrazilianReal(getTotalPrice())}
+            </div>
+          )}
         </StyledBillModal>
       </Modal>
   )

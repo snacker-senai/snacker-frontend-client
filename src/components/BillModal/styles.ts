@@ -51,10 +51,17 @@ export const StyledBillModal = styled.div`
 
     .totalPrice {
         padding: 10px;
-        padding-top: 15px;
-        padding-bottom: 12px;
+        padding-top: 21px;
+        padding-bottom: 16px;
         text-align: end;
         font-weight: bold;
         font-size: 1.2em;
+    }
+
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
     }
 `
