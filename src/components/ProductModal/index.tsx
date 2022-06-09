@@ -21,9 +21,11 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    zIndex: 100000
   },
   overlay: {
-    background: "rgba(0, 0, 0, 0.25)"
+    background: "rgba(0, 0, 0, 0.25)",
+    zIndex: 100000
   }
 }
 

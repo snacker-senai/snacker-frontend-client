@@ -9,7 +9,8 @@ import { StyledBillModal } from './styles'
 
 const customStyles = {
   overlay: {
-    background: "rgba(0, 0, 0, 0.25)"
+    background: "rgba(0, 0, 0, 0.25)",
+    zIndex: 100000
   },
   content: {
     top: '50%',
@@ -18,7 +19,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: '100vw'
+    maxWidth: '100vw',
+    zIndex: 100000
   }
 }
 

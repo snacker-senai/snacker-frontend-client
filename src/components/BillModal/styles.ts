@@ -4,6 +4,8 @@ export const StyledBillModal = styled.div`
     height: 100%;
     width: 650px;
     max-width: calc(100vw - 75px);
+    max-height: calc(100vh - 42px);
+    z-index: 10000;
 
     .header {
         display: flex;
