@@ -68,7 +68,7 @@ export const Cart = () => {
                 )}
                 {products.length < 1 && (
                     <>
-                        <span><b>Sua escola está vazia</b></span>
+                        <span><b>Sua sacola está vazia</b></span>
                         <span>Adicione itens</span>
                     </>
                 )}
