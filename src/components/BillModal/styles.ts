@@ -45,6 +45,22 @@ export const StyledBillModal = styled.div`
                 }
             }
 
+            .order-status {
+                font-weight: bold;
+            }
+
+            .status-1 {
+                color: blue;
+            }
+
+            .status-2 {
+                color: orange;
+            }
+
+            .status-3 {
+                color: green;
+            }
+
             .subtotal {
                 font-weight: bold;
             }

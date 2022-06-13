@@ -4,7 +4,7 @@ import { TailSpin } from 'react-loader-spinner'
 import Modal from 'react-modal'
 import { useMenu } from '../../context/MenuContext'
 import { formatToBrazilianReal } from '../../helpers/format'
-import { IOrderWithProducts, IProductWithQuantity, OrderService } from '../../services/Order/OrderService'
+import { IOrderStatus, IOrderWithProducts, IProductWithQuantity, OrderService } from '../../services/Order/OrderService'
 import { StyledBillModal } from './styles'
 
 const customStyles = {
@@ -43,7 +43,7 @@ export const BillModal = () => {
     return totalPrice
   }
 
-  const renderBillProducts = (products: IProductWithQuantity[]) => {
+  const renderBillProducts = (products: IProductWithQuantity[], orderStatus: IOrderStatus) => {
     let subtotal = 0
 
     products.forEach(product => subtotal += product.price * product.quantity)
@@ -56,7 +56,8 @@ export const BillModal = () => {
             <div className="product-price">R$ {formatToBrazilianReal(product.price * product.quantity)}</div>
           </div>
         ))}
-        <div style={{ display: 'flex', justifyContent: 'end' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '14px' }}>
+          <div className={`order-status status-${orderStatus.id}`}>{orderStatus.name}</div>
           <div className="subtotal">Subtotal R$ {formatToBrazilianReal(subtotal)}</div>
         </div>
       </div>
@@ -86,7 +87,7 @@ export const BillModal = () => {
           <div className="content">
             {!!orders.length && (
               <>
-                {orders.map(order => renderBillProducts(order.productsWithQuantity))}
+                {orders.map(order => renderBillProducts(order.productsWithQuantity, order.orderStatus))}
               </>
             )}
             {!orders.length && (

@@ -5,12 +5,14 @@ interface IProductsWithQuantity {
   quantity: number
 }
 
+export interface IOrderStatus {
+  id: number
+  name: string
+}
+
 export interface IOrderWithProducts {
   id: number
-  orderStatus: {
-    id: number,
-    name: string
-  }
+  orderStatus: IOrderStatus
   productsWithQuantity: IProductWithQuantity[]
 }
 
