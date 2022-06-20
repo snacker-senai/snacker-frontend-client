@@ -14,7 +14,8 @@ export const Cart = () => {
         try {
             const productsWithQuantity = products.map(product => ({
                 productId: product.id,
-                quantity: product.quantity
+                quantity: product.quantity,
+                details: product.details !== '' ? product.details : null
             }))
 
             await OrderService.create(productsWithQuantity)

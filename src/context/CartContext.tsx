@@ -18,6 +18,7 @@ interface ICartContextProps {
 
 interface ICartProduct extends IProduct {
   quantity: number
+  details: string
 }
 
 export const CartContext = createContext({} as ICartContextProps)

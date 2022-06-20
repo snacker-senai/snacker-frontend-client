@@ -10,7 +10,7 @@ export const StyledCart = styled.div<IStyledCartProps>`
     height: calc(100% - 75px);
     overflow: hidden;
     transition: width 0.2s ease-in-out;
-    z-index: 999;
+    z-index: 500000;
     background-color: transparent;
     position: fixed;
     right: 0;

@@ -31,6 +31,8 @@ const customStyles = {
 
 export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalProps) => {
     const [productQuantity, setProductQuantity] = useState(1)
+    const [productDetails, setProductDetails] = useState('')
+
     const { addProduct } = useCart()
 
     const increaseProductQuantity = () => {
@@ -44,9 +46,10 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
     }
 
     const handleAddProductOnCart = () => {
-      addProduct({ ...selectedProduct!, quantity: productQuantity })
+      addProduct({ ...selectedProduct!, quantity: productQuantity, details: productDetails })
       onRequestClose()
       setProductQuantity(1)
+      setProductDetails('')
       emitInfoToast('Produto adicionado no carrinho!')
     }
 
@@ -74,7 +77,14 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
                 </div>
                 <div className="comment-container">
                   <span>Algum comentário?</span>
-                  <textarea className="comment-input" placeholder="Ex: tirar a cebola, maionese à parte, etc." rows={3}></textarea>
+                  <textarea 
+                    className="comment-input" 
+                    placeholder="Ex: tirar a cebola, maionese à parte, etc." 
+                    rows={3}
+                    value={productDetails}
+                    onChange={(e) => setProductDetails(e.target.value)}
+                  >
+                  </textarea>
                 </div>
                 <div className="footer">
                   <div className="quantity-container">
