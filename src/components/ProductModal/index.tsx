@@ -50,7 +50,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
       onRequestClose()
       setProductQuantity(1)
       setProductDetails('')
-      emitInfoToast('Produto adicionado no carrinho!')
+      emitInfoToast('Produto adicionado na sacola!')
     }
 
     return (

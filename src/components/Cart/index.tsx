@@ -1,31 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
 import { StyledCart } from './styles'
 import { FaTimes } from 'react-icons/fa'
 import { emitSuccessToast } from '../../helpers/toast'
 import { OrderService } from '../../services/Order/OrderService'
+import { Loading } from '../Loading'
 
 
 export const Cart = () => {
+    const [isLoading, setIsLoading] = useState(false)
+
     const { products, expandedCart, collapseCartBar, removeProduct, getCartTotalPrice, clearCart } = useCart()
 
     const handleFinishOrder = async () => {
-        try {
-            const productsWithQuantity = products.map(product => ({
-                productId: product.id,
-                quantity: product.quantity,
-                details: product.details !== '' ? product.details : null
-            }))
+        const productsWithQuantity = products.map(product => ({
+            productId: product.id,
+            quantity: product.quantity,
+            details: product.details !== '' ? product.details : null
+        }))
 
-            await OrderService.create(productsWithQuantity)
+        setIsLoading(true)
+        await OrderService.create(productsWithQuantity)
+        setIsLoading(false)
 
-            emitSuccessToast('Pedido realizado com sucesso!')
-            collapseCartBar()
-            clearCart()
-        } catch (error) {
-            alert(error)
-        }
+        emitSuccessToast('Pedido realizado com sucesso!')
+        collapseCartBar()
+        clearCart()
     }
 
     return (
@@ -52,7 +53,6 @@ export const Cart = () => {
                                         </div>
                                     </div>
                                     <div className="product-options">
-                                        <span className="edit">Editar</span>
                                         <span className="remove" onClick={() => removeProduct(product.id)}>Remover</span>
                                     </div>
                                 </div>
@@ -74,6 +74,7 @@ export const Cart = () => {
                     </>
                 )}
             </div>
+            <Loading visible={isLoading} />
         </StyledCart>
     )
 }
