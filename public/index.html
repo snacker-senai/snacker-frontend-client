@@ -23,5 +23,22 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      style="z-index: 9999999999"
+      intent="WELCOME"
+      chat-title="Snacker"
+      agent-id="53e472da-cbe2-4e8c-8e9a-ceed9d911de5"
+      language-code="pt-br"
+    ></df-messenger>
+    <script>
+      window.addEventListener('dfMessengerLoaded', function (event) {
+        const dfMessenger = document.querySelector('df-messenger')
+        const style = document.createElement('style')
+
+        style.textContent = '@media (max-width: 500px) { .chat-wrapper { height: calc(100vh - 130px) !important; } }'
+        dfMessenger.shadowRoot.querySelector('df-messenger-chat').shadowRoot.appendChild(style)
+      })
+    </script>
   </body>
 </html>
