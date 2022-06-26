@@ -24,9 +24,6 @@ export const TopBar = () => {
                     </div>
                 )}
                 <div className="right-session">
-                    <span>
-                        <BsMegaphone />
-                    </span>
                     <span onClick={() => setIsBillModalVisible(true)} className="bill-icon">
                         <BsLayoutTextSidebarReverse/>
                     </span>
