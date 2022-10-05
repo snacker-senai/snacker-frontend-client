@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledProduct = styled.div`
     background-color: white;
-    border: 1px solid rgb(220, 220, 220);
+    border: 1px solid rgb(236, 236, 236);
     border-radius: 4px;
     padding: 14px;
     width: 48%;
@@ -12,6 +12,7 @@ export const StyledProduct = styled.div`
     display: flex;
     cursor: pointer;
     transition: 0.25s;
+    box-shadow: 3px 3px 15px -8px rgba(0,0,0,0.12);
 
     .left-session {
         display: flex;
@@ -37,7 +38,7 @@ export const StyledProduct = styled.div`
     }
 
     @media (max-width: 768px) {
-        width: 98%;
+        width: 100%;
     }
 
     .title {

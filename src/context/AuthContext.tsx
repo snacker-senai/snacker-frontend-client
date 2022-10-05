@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { AuthService } from '../services/Auth/AuthService'
+import { AuthService, Theme } from '../services/Auth/AuthService'
 
 export interface IUser {
     number: string
@@ -14,12 +14,21 @@ interface IAuthContextProps {
   user: IUser | null
   setUser(user: IUser): void
   getClientSessionInfo(): void
+  theme: Theme
 }
 
 export const AuthContext = createContext({} as IAuthContextProps)
 
+const defaultTheme = localStorage.getItem('theme') ? JSON.parse(localStorage.getItem('theme')!) : {
+  color: '#fff',
+  fontColor: '#000',
+  secondaryColor: '#fff',
+  secondaryFontColor: '#000'
+}
+
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null)
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
 
   const logout = async () => {
     localStorage.removeItem('accessToken')
@@ -28,8 +37,9 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   }
 
   const getClientSessionInfo = async () => {
-      const { number } = await AuthService.getCurrentUser()
+      const { number, theme } = await AuthService.getCurrentUser()
       setUser({ number })
+      setTheme(theme)
   }
 
   return (
@@ -37,7 +47,8 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
       logout,
       user,
       setUser,
-      getClientSessionInfo
+      getClientSessionInfo,
+      theme
     }}>
       {children}
     </AuthContext.Provider>

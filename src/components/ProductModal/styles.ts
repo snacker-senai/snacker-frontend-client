@@ -76,8 +76,8 @@ export const StyledProductModal = styled.div`
                 justify-content: end;
 
                 .add-button {
-                    background-color: rgb(27, 94, 173);
-                    color: white;
+                    background-color: ${props => props.theme.color};
+                    color: ${props => props.theme.fontColor};
                     padding: 13px;
                     font-weight: bold;
                     border-radius: 5px;

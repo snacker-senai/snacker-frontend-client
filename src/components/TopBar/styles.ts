@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import { Theme } from '../../services/Auth/AuthService'
 
 interface IStyledTopBar {
     isCartEmpty: boolean
+    theme: Theme
 }
 
 export const StyledTopBar = styled.div<IStyledTopBar>`
@@ -9,8 +11,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: white;
-    border-bottom: 1px solid var(--light-gray);
+    background-color: ${props => props.theme.color};
     position: fixed;
     z-index: 1000;
 
@@ -20,13 +21,24 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
         height: 100%;
     }
 
+    div.icon-session {
+      height: 100%;
+      padding: 12px;
+      overflow: hidden;
+      width: 114px;
+    }
+
+    div.icon-session img {
+      height: 100%;
+    }
+
     div.left-session {
         display: flex;
         align-items: center;
         font-size: 25px;
-        font-weight: bold;
+        font-weight: 500;
         padding: 15px;
-        color: rgb(51, 51, 54);
+        color: ${props => props.theme.fontColor};
     }
 
     div.center-session {
@@ -52,6 +64,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             top: 50%;
             transform: translateY(-50%);
             color: rgb(80, 80, 80);
+            font-weight: 500;
         }
     }
 
@@ -70,13 +83,13 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             padding-right: 10px;
 
             svg {
-                color: var(--dark-gray);
+                color: ${props => props.theme.fontColor};
                 cursor: pointer;
             }
         }
 
         .bill-icon {
-            font-size: 20px;
+            font-size: 26px;
         }
 
         .cart-icon {
@@ -86,18 +99,19 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             transition: 0.25s;
             padding-left: 11px;
             padding-right: 11px;
+            font-size: 26px;
             
             svg {
-                color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
+              color: ${props => props.theme.fontColor};
             }
 
             .cart-price {
-                color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
-                font-size: 10px;
+              color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
+              font-size: 10px;
             }
 
             &:hover {
-                background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--dark-blue)'};
+              background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--dark-blue)'};
             }
         }
     }

@@ -1,6 +1,6 @@
-import React from 'react'
 import { StyledTopBar } from './styles'
-import { BsMegaphone, BsBag, BsLayoutTextSidebarReverse } from 'react-icons/bs'
+import { IoCart } from 'react-icons/io5'
+import { IoIosListBox } from 'react-icons/io'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
 import { useMenu } from '../../context/MenuContext'
@@ -10,12 +10,14 @@ import { FiSearch } from 'react-icons/fi'
 export const TopBar = () => {
     const { switchCartExpansion, products, getCartTotalPrice } = useCart()
     const { search, setIsBillModalVisible, isDesktop } = useMenu()
-    const { user } = useAuth()
-
+    const { user, theme } = useAuth()
     
     return (
         <StyledTopBar isCartEmpty={!products.length}>
             <div className="menu-sessions">
+                <div className="icon-session">
+                    <img src={theme.icon} alt="Ícone" />
+                </div>
                 <div className="left-session">Mesa {user?.number}</div>
                 {isDesktop && (
                     <div className="center-session">
@@ -25,10 +27,10 @@ export const TopBar = () => {
                 )}
                 <div className="right-session">
                     <span onClick={() => setIsBillModalVisible(true)} className="bill-icon">
-                        <BsLayoutTextSidebarReverse/>
+                        <IoIosListBox />
                     </span>
                     <span className="cart-icon" onClick={switchCartExpansion}>
-                        <BsBag />
+                        <IoCart />  
                         {!!products.length && (
                             <span className="cart-price">R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
                         )}

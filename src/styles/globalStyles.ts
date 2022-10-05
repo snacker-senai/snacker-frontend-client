@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0px;
         border: 0px;
         box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 
     :root {
