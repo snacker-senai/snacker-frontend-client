@@ -60,9 +60,9 @@ export const StyledCart = styled.div<IStyledCartProps>`
         padding-bottom: 17px;
 
         span {
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.15em;
-            color: rgb(48, 48, 48);
+            color: rgb(33, 33, 33);
 
             svg {
                 cursor: pointer;
@@ -78,11 +78,11 @@ export const StyledCart = styled.div<IStyledCartProps>`
         padding: 5px;
         padding-top: 16px;
         padding-bottom: 16px;
-        border-top: 1px solid var(--light-gray);
+        border-top: 1px solid rgb(225, 225, 225);
         font-size: 1.08em;
 
         &:last-child {
-            border-bottom: 1px solid var(--light-gray);
+            border-bottom: 1px solid rgb(225, 225, 225);
         }
 
         .product-information {
@@ -90,22 +90,22 @@ export const StyledCart = styled.div<IStyledCartProps>`
             justify-content: space-between;
 
             .product-price {
-                font-weight: bold;
+                font-weight: 600;
             }
         }
 
         .product-options {
             margin-top: 15px;
-            font-weight: bold;
+            font-weight: 600;
 
             .edit {
-                color: var(--blue);
+                /* color: var(--blue); */
                 margin-right: 12px;
                 cursor: pointer;
             }
 
             .remove {
-                color: rgb(120, 120, 120);
+                color: rgb(50, 50, 50);
                 cursor: pointer;
             }
         }
@@ -115,16 +115,16 @@ export const StyledCart = styled.div<IStyledCartProps>`
         .order-button {
             width: 100%;
             padding: 15px;
-            background-color: rgb(30, 97, 176);
+            background-color: ${props => props.theme.color};
             color: white;
-            font-size: 1.33em;
+            font-size: 1.15em;
             font-weight: 500;
             letter-spacing: 0.5px;
             border-radius: 5px;
             cursor: pointer;
 
             &:hover {
-                background-color: var(--dark-blue);
+                filter: brightness(85%);
             }
         }
 
@@ -135,8 +135,13 @@ export const StyledCart = styled.div<IStyledCartProps>`
             padding-bottom: 14px;
 
             span {
-                font-weight: bold;
+                font-weight: 600;
                 font-size: 1.42em;
+            }
+
+            .value {
+                font-weight: 500;
+                font-size: 1.35em;
             }
         }
     }

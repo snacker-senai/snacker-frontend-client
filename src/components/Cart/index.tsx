@@ -61,7 +61,7 @@ export const Cart = () => {
                         <div className="cart-information">
                             <div className="cart-total-price">
                                 <span>Total</span>
-                                <span>R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
+                                <span className="value">R$ {formatToBrazilianReal(getCartTotalPrice())}</span>
                             </div>
                             <button className="order-button" onClick={handleFinishOrder}>Realizar pedido</button>
                         </div>
