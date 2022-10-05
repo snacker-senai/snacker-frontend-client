@@ -27,6 +27,8 @@ export const StyledMain = styled.div`
         input {
             background-color: rgb(255, 255, 255);
             padding: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
             border-radius: 66px;
             width: 100%;
             padding-right: 48px;
@@ -36,8 +38,8 @@ export const StyledMain = styled.div`
 
         svg {
             position: absolute;
-            font-size: 22px;
-            right: 16px;
+            font-size: 23px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             color: rgb(80, 80, 80);
