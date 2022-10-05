@@ -30,6 +30,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
 
     div.icon-session img {
       height: 100%;
+      border-radius: 3px;
     }
 
     div.left-session {
@@ -94,7 +95,7 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
 
         .cart-icon {
             cursor: pointer;
-            background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--blue)'};
+            background-color: ${props => props.isCartEmpty ? 'transparent' : props => props.theme.secondaryColor};
             border-radius: 33px;
             transition: 0.25s;
             padding-left: 11px;
@@ -106,12 +107,12 @@ export const StyledTopBar = styled.div<IStyledTopBar>`
             }
 
             .cart-price {
-              color: ${props => props.isCartEmpty ? 'var(--dark-gray)' : 'white'};
+              color: ${props => props.isCartEmpty ? props.theme.fontColor : props.theme.tertiaryFontColor};
               font-size: 10px;
             }
 
             &:hover {
-              background-color: ${props => props.isCartEmpty ? 'transparent' : 'var(--dark-blue)'};
+              filter: ${props => props.isCartEmpty ? 'brightness(100%)' : 'brightness(85%)'};
             }
         }
     }
