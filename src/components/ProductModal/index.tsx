@@ -7,6 +7,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 import { useCart } from '../../context/CartContext'
 import { formatToBrazilianReal } from '../../helpers/format'
 import { emitInfoToast } from '../../helpers/toast'
+import { useMenu } from '../../context/MenuContext'
 
 interface IProductModalProps {
   onRequestClose: () => void
@@ -25,7 +26,8 @@ const customStyles = {
     padding: 0,
     width: '100%',
     height: '100%',
-    border: 0
+    border: 0,
+    borderRadius: 0
   },
   overlay: {
     background: "rgba(0, 0, 0, 0.25)",
@@ -38,6 +40,7 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
     const [productDetails, setProductDetails] = useState('')
 
     const { addProduct } = useCart()
+    const { isDesktop } = useMenu()
 
     const increaseProductQuantity = () => {
       setProductQuantity(productQuantity + 1)
@@ -57,11 +60,21 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
       emitInfoToast('Produto adicionado na sacola!')
     }
 
+    const modalStyles = {
+      ...customStyles,
+      content: {
+        ...customStyles.content,
+        maxWidth: isDesktop ? '500px' : '100vw',
+        height: isDesktop ? '90%' : '100%',
+        borderRadius: isDesktop ? '4px' : '0px'
+      }
+    }
+
     return (
         <Modal
           isOpen={!!selectedProduct}
           contentLabel="Teste"
-          style={customStyles}
+          style={modalStyles}
         >
           <StyledProductModal>
             <div className="header">

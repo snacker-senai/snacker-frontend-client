@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 export const StyledProductModal = styled.div`
-    /* height: calc(100vh - 90px); */
-    /* max-width: calc(100vw - 90px); */
     width: 100%;
     height: 100%;
 
@@ -63,6 +61,7 @@ export const StyledProductModal = styled.div`
         .right-session {
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
             padding: 24px;
 
             .product-title {
@@ -156,18 +155,11 @@ export const StyledProductModal = styled.div`
     }
 
     @media (max-width: 768px) {
-        .content {
-            display: flex;
-            flex-direction: column;
-        }
-
         .left-session {
             width: 100% !important;
-            /* padding: 10px !important; */
         }
 
         .right-session {
-            /* padding: 10px !important; */
             width: 100% !important;
             flex-grow: 1 !important;
         }
