@@ -33,7 +33,7 @@ export const StyledCart = styled.div<IStyledCartProps>`
 
     .cart-bar {
         width: 30%;
-        background-color: white;
+        background-color: rgb(249, 249, 249);
         height: 100%;
         border-left: 1px solid var(--light-gray);
         padding: 20px;

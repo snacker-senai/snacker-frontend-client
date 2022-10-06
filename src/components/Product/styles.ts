@@ -30,6 +30,7 @@ export const StyledProduct = styled.div`
         img {
             max-width: 95%;
             max-height: 95%;
+            border-radius: 3px;
         }
     }
 

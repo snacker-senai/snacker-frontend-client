@@ -1,49 +1,79 @@
 import styled from 'styled-components'
 
 export const StyledProductModal = styled.div`
-    height: calc(100vh - 90px);
-    max-width: calc(100vw - 90px);
+    /* height: calc(100vh - 90px); */
+    /* max-width: calc(100vw - 90px); */
+    width: 100%;
+    height: 100%;
 
     .header {
+        position: absolute;
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+        align-items: center;
         font-weight: 600;
         font-size: 1.21em;
-        color: rgb(63, 63, 63);
+        padding: 13px;
+        z-index: 999;
         
         .close-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            background-color: white;
             cursor: pointer;
+            border-radius: 100%;
+            box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.1);
         }
     }
 
     .content {
         display: flex;
+        flex-direction: column;
         height: 100%;
+        width: 100%;
 
         .left-session {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 25px;
+            position: relative;
+            width: 100%;
+            height: 33%;
+            overflow: hidden;
 
             img {
-                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                box-shadow: 
+                    inset 0px 11px 8px -10px #000,
+                    inset 0px -11px 8px -10px #000; 
             }
 
-            padding: 12px;
+            .shadow {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                box-shadow: inset 0px 20px 22px -10px rgba(0, 0, 0, 0.08);
+            }
         }
 
         .right-session {
-            width: 50%;
-            padding: 30px;
-            padding-top: 50px;
             display: flex;
             flex-direction: column;
+            padding: 24px;
+
+            .product-title {
+                font-size: 1.3em;
+                color: rgb(33, 33, 33);
+                font-weight: 600;
+            }
 
             .product-description {
-                font-size: 0.98em;
+                margin-top: 4px;
+                font-size: 1.05em;
                 color: rgb(105, 105, 105);
             }
 
@@ -54,19 +84,24 @@ export const StyledProductModal = styled.div`
                 span {
                     width: 100%;
                     margin-left: 1px;
-                    font-weight: bold;
-                    font-size: 1.1em;
+                    font-weight: 500;
+                    font-size: 1.05em;
                     color: rgb(80, 80, 80);
                 }
 
                 .comment-input {
                     margin-top: 8px;
                     padding: 15px;
-                    border: 1px solid var(--light-gray);
+                    border: 1px solid rgb(223, 223, 223);
                     border-radius: 5px;
                     width: 100%;
                     outline: none;
                     resize: none;
+                }
+
+                .comment-input::placeholder {
+                    color: rgb(190, 190, 190);
+                    font-weight: 400;
                 }
             }
 
@@ -93,7 +128,7 @@ export const StyledProductModal = styled.div`
                     display: flex;
                     align-items: center;
                     margin-right: 10px;
-                    border: 1px solid rgb(175, 175, 175);
+                    border: 1px solid rgb(223, 223, 223);
                     border-radius: 5px;
 
                     span {
@@ -121,22 +156,18 @@ export const StyledProductModal = styled.div`
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 70px);
-        max-width: calc(100vw - 65px);
-
         .content {
             display: flex;
             flex-direction: column;
         }
 
         .left-session {
-            height: auto !important;
             width: 100% !important;
-            padding: 10px !important;
+            /* padding: 10px !important; */
         }
 
         .right-session {
-            padding: 10px !important;
+            /* padding: 10px !important; */
             width: 100% !important;
             flex-grow: 1 !important;
         }

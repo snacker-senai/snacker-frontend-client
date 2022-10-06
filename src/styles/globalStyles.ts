@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     
     html, body {
         color: rgb(30, 30, 30);
-        background-color: rgb(245, 245, 245);
+        background-color: rgb(247, 247, 247);
     }
 
     body > #root > div {

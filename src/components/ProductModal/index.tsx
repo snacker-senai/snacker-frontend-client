@@ -21,7 +21,11 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    zIndex: 100000
+    zIndex: 100000,
+    padding: 0,
+    width: '100%',
+    height: '100%',
+    border: 0
   },
   overlay: {
     background: "rgba(0, 0, 0, 0.25)",
@@ -61,17 +65,19 @@ export const ProductModal = ({ onRequestClose, selectedProduct }: IProductModalP
         >
           <StyledProductModal>
             <div className="header">
-              <div></div>
-              <div className="modal-title">{selectedProduct?.name}</div>
               <div className="close-button" onClick={onRequestClose}>
                 <FaTimes />
               </div>
             </div>
             <div className="content">
               <div className="left-session">
+                <div className="shadow"></div>
                 <img src={selectedProduct?.image} alt="imagem" />
               </div>
               <div className="right-session">
+                <div className="product-title">
+                  {selectedProduct?.name}
+                </div>
                 <div className="product-description">
                   {selectedProduct?.description}
                 </div>

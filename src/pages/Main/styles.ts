@@ -16,7 +16,7 @@ export const StyledMain = styled.div`
         margin-top: 130px;
         width: 100%;
         max-width: 1100px;
-        background: rgb(245, 245, 245);
+        background: rgb(247, 247, 247);
     }
 
     .input-container {
