@@ -33,7 +33,7 @@ export const StyledCart = styled.div<IStyledCartProps>`
 
     .cart-bar {
         width: 30%;
-        background-color: rgb(249, 249, 249);
+        background-color: rgb(250, 250, 250);
         height: 100%;
         border-left: 1px solid var(--light-gray);
         padding: 20px;
@@ -114,7 +114,7 @@ export const StyledCart = styled.div<IStyledCartProps>`
     .cart-information {
         .order-button {
             width: 100%;
-            padding: 15px;
+            padding: 13px;
             background-color: ${props => props.theme.color};
             color: white;
             font-size: 1.15em;

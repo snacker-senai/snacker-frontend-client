@@ -20,13 +20,16 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '100vw',
-    zIndex: 100000
+    maxHeight: '90%',
+    zIndex: 100000,
+    background: 'rgb(246, 246, 246)'
   }
 }
 
 export const BillModal = () => {
-  const { isBillModalVisible, setIsBillModalVisible } = useMenu()
   const [orders, setOrders] = useState<IOrderWithProducts[]>([])
+
+  const { isBillModalVisible, setIsBillModalVisible, isDesktop } = useMenu()
 
   const getCurrentBill = async () => {
     const orders = await OrderService.getAll()
@@ -64,6 +67,16 @@ export const BillModal = () => {
     )
   }
 
+  const modalStyles = {
+    ...customStyles,
+    content: {
+      ...customStyles.content,
+      width: isDesktop ? 'auto' : '100%',
+      borderRadius: isDesktop ? '3px' : '0px',
+      maxHeight: isDesktop ? '90%' : '100%'
+    }
+  }
+
   useEffect(() => {
     if (isBillModalVisible) {
       getCurrentBill()
@@ -74,7 +87,7 @@ export const BillModal = () => {
       <Modal
         isOpen={isBillModalVisible}
         contentLabel="Teste"
-        style={customStyles}
+        style={modalStyles}
       >
         <StyledBillModal>
           <div className="header">
@@ -97,8 +110,10 @@ export const BillModal = () => {
             )}
           </div>
           {!!orders.length && (
-            <div className="totalPrice">
-              Total: R$ {formatToBrazilianReal(getTotalPrice())}
+            <div className="total-price">
+              <span>
+                Total: R$ {formatToBrazilianReal(getTotalPrice())}
+              </span>
             </div>
           )}
         </StyledBillModal>
