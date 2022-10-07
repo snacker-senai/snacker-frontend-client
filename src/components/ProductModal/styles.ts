@@ -112,14 +112,16 @@ export const StyledProductModal = styled.div`
                 .add-button {
                     background-color: ${props => props.theme.color};
                     color: ${props => props.theme.fontColor};
-                    padding: 13px;
+                    padding: 11px;
+                    padding-left: 14px;
+                    padding-right: 14px;
                     font-weight: bold;
                     border-radius: 5px;
                     transition: 0.3s;
                     cursor: pointer;
 
                     &:hover {
-                        background-color: rgb(17, 84, 163);
+                        filter: brightness(85%);
                     }
                 }
 
@@ -131,7 +133,7 @@ export const StyledProductModal = styled.div`
                     border-radius: 5px;
 
                     span {
-                        padding: 12px;
+                        padding: 10px;
                         display: flex;
                         align-items: center;
                         color: rgb(60, 60, 60);
