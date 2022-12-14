@@ -69,6 +69,12 @@ export const Cart = () => {
                 )}
                 {products.length < 1 && (
                     <>
+                        <span 
+                            style={{ position: 'absolute', top: '8px', right: '8px', padding: '10px' }} 
+                            onClick={collapseCartBar}
+                        >
+                            <FaTimes />
+                        </span>
                         <span><b>Sua sacola está vazia</b></span>
                         <span>Adicione itens</span>
                     </>
