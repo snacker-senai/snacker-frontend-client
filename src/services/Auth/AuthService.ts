@@ -9,7 +9,7 @@ export interface Theme {
     icon?: string
 }
 interface AuthResponse {
-    table: { number: string }
+    tableNumber: string
     theme: Theme
 }
 
@@ -20,7 +20,7 @@ export class AuthService {
         localStorage.setItem('theme', JSON.stringify(data.theme))
     
         return {
-            number: data.table.number,
+            number: data.tableNumber,
             ...data
         }
     }
