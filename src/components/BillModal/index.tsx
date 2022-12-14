@@ -28,12 +28,15 @@ const customStyles = {
 
 export const BillModal = () => {
   const [orders, setOrders] = useState<IOrderWithProducts[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const { isBillModalVisible, setIsBillModalVisible, isDesktop } = useMenu()
 
   const getCurrentBill = async () => {
+    setIsLoading(true)
     const orders = await OrderService.getAll()
     setOrders(orders)
+    setIsLoading(false)
   }
 
   const getTotalPrice = () => {
@@ -98,18 +101,23 @@ export const BillModal = () => {
             </div>
           </div>
           <div className="content">
-            {!!orders.length && (
+            {(!!orders.length && !isLoading) && (
               <>
                 {orders.map(order => renderBillProducts(order.productsWithQuantity, order.orderStatus))}
               </>
             )}
-            {!orders.length && (
+            {isLoading && (
               <div className="loading">
                 <TailSpin color="var(--blue)" height={80} width={80} />
               </div>
             )}
+            {(!orders.length && !isLoading) && (
+              <div className="loading">
+                Nenhum pedido encontrado
+              </div>
+            )}
           </div>
-          {!!orders.length && (
+          {(!!orders.length && !isLoading) && (
             <div className="total-price">
               <span>
                 Total: R$ {formatToBrazilianReal(getTotalPrice())}
