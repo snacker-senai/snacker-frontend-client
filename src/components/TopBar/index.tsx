@@ -15,7 +15,9 @@ export const TopBar = () => {
         <StyledTopBar isCartEmpty={!products.length}>
             <div className="menu-sessions">
                 <div className="icon-session">
-                    <img src={theme.icon} alt="Ícone" />
+                    {theme.icon && (
+                        <img src={theme.icon} alt="Ícone" />
+                    )}
                 </div>
                 <div className="left-session">Mesa {user?.number}</div>
                 <div className="right-session">
