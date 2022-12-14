@@ -17,7 +17,7 @@ export const Cart = () => {
         const productsWithQuantity = products.map(product => ({
             productId: product.id,
             quantity: product.quantity,
-            details: product.details !== '' ? product.details : null
+            details: product.details !== '' ? product.details : ''
         }))
 
         setIsLoading(true)
